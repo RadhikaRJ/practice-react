@@ -40,6 +40,26 @@ function App() {
 
   }
 
+  //password Match---------------------------------------------------------------------------------------------
+
+  const[pswd1,setpswd1]=useState("");
+ const [pswdstatus,setpswdstatus]=useState(false);
+  
+   function handlePassword(event){
+     var pswd=event.target.value;
+    setpswd1(pswd);
+
+   }
+
+   function verifyPassword(event){
+     var confirmpswd=event.target.value;
+    if(pswd1==confirmpswd){
+      setpswdstatus(true);
+    }
+    else{
+      setpswdstatus(false);
+    }
+   }
 
   return (
     <div className="App">
@@ -51,14 +71,21 @@ function App() {
        
 
         <h3>Character counter -Twitter</h3>
-       <input type="text" id="input"
+       <input type="text" 
         onChange={inputChangeHandler}
-       style={{
-        border: "2px solid black"
-        
-       }}></input>
+       ></input>
         <p>{userInput}</p>
         <p>{currentLength} is your current char count<br></br>Chars left: {charLeftLength}</p>
+
+
+       <h3>Password Match</h3>
+       <label>Enter password: </label>
+       <input type="password"
+       onChange={handlePassword}></input>
+       <br></br>
+       <label>Confirm password: </label>
+       <input type="password"
+       onChange={verifyPassword}></input><span>{pswdstatus}</span>
 
 
     </div>
