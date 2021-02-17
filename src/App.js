@@ -142,6 +142,7 @@ function App() {
       
       buttonRef.disabled=false;
       buttonRef.addEventListener("click",()=>{
+        alert("password entered is: "+ updatedAlphanumericPswdTwo);
         console.log(updatedAlphanumericPswdTwo);
       });
 
@@ -217,6 +218,7 @@ function App() {
       <button id="alphaSubmit" 
       
       disabled>Submit Alphanumeric Password </button>
+      
     </div>
   );
 }
