@@ -145,13 +145,8 @@ function App() {
      }
    }
 
-
-
-
-
-
-
-
+   
+   
 
   return (
     <div className="App">
@@ -211,7 +206,9 @@ function App() {
       <hr></hr>
 
       <h3>Disable Submit Button</h3>
-      <button id="alphaSubmit" disabled>Submit Alphanumeric Password </button>
+      <button id="alphaSubmit" 
+      
+      disabled>Submit Alphanumeric Password </button>
     </div>
   );
 }
