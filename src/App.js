@@ -92,7 +92,8 @@ function App() {
    const [alphanumericPaswdTwo,setAlphanumericPswdTwo] = useState("");
    const [alphanumericPasswordMatchStatus, setAlphanumericPasswordMatchStatus] = useState("");
    const [isAlphanumeric,setisAlphanumeric] = useState("");
-
+   var buttonRef=document.querySelector('#alphaSubmit');
+   
    function handleAlphanumericPswdOne(event){
       var alpha_pswd_one=event.target.value;
       setAlphanumericPswdOne(currentPassword=>{
@@ -127,12 +128,20 @@ function App() {
        const pswdtwo=updatedAlphanumericPswdTwo;
        return pswdtwo;
      });
-
+     
      if(alphanumericPaswdOne!=updatedAlphanumericPswdTwo){
       setAlphanumericPasswordMatchStatus(status=>"Passwords are not Matching!");
-     }
+      
+      
+      buttonRef.disabled=true;
+  
+    }
      else {
       setAlphanumericPasswordMatchStatus(status=>"Passwords are Matching!");
+    
+      
+      buttonRef.disabled=false;
+
      }
    }
 
@@ -200,6 +209,9 @@ function App() {
       <p>Password Match result: {alphanumericPasswordMatchStatus} </p>
 
       <hr></hr>
+
+      <h3>Disable Submit Button</h3>
+      <button id="alphaSubmit" disabled>Submit Alphanumeric Password </button>
     </div>
   );
 }
