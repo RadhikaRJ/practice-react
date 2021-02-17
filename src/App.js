@@ -26,17 +26,23 @@ function App() {
 
   function inputChangeHandler(event){
     // console.log(event.target.value);
-    
-    setUserInput(event.target.value);
-    calulateCharLimit(userInput);
+    const currentInput=event.target.value;
+    setUserInput(currentVal=>currentInput);
+    calulateCharLimit(currentInput);
   }
 
   function calulateCharLimit(updatedUserInput){
-    setCurrentLength(updatedUserInput.length+1);
+    // setCurrentLength(updatedUserInput.length+1);
+    const lengthOfInput=updatedUserInput.length;
+    setCurrentLength(currentInputLength=>{
+      var inputLength=lengthOfInput;
+      return inputLength;
+    });
+
     // console.log(currentLength+"current length");
-    var charLeftCount=(permittedCharLimit-(currentLength+1));
+    var charLeftCount=(permittedCharLimit-lengthOfInput);
     // console.log(charLeftCount+"charleftcount");
-    setCharLeftLength(charLeftCount);
+    setCharLeftLength(updatedLength=>charLeftCount);
 
 
   }
