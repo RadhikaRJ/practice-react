@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from "react";
+import { compare } from 'semver';
 
 
 function App() {
@@ -42,25 +43,47 @@ function App() {
 
   //password Match---------------------------------------------------------------------------------------------
 
-  const[pswd1,setpswd1]=useState("");
- const [pswdstatus,setpswdstatus]=useState(false);
+ 
+  const [passwordOne, setPasswordOne] = useState("");
+  const [passwordTwo, setPasswordTwo] = useState("");
+  const [passwordMatchStatus,setPasswordMatchStatus] = useState("");
   
-   function handlePassword(event){
-     var pswd=event.target.value;
-    setpswd1(pswd);
+  
+   function handleFirstPasswordInput(event){
+     var updatedPasswordOne=event.target.value;
+      setPasswordOne(currentPassword=>{
+        const latestPasswordOneValue=updatedPasswordOne;
+        return latestPasswordOneValue;
+      });
+      
+   }
+
+   
+  //  console.log("password one is : " + passwordOne);
+  //  console.log("password two is: " + passwordTwo);     
+   
+   function comparePasswords(event){
+     
+    var updatedPasswordTwo=event.target.value;
+      setPasswordTwo(currentPassword=>{
+        const latestPasswordTwoValue=updatedPasswordTwo;
+        return latestPasswordTwoValue;
+      });
+
+      var latestPasswordValue=event.target.value;
+      if(passwordOne!=latestPasswordValue){
+        setPasswordMatchStatus(current=>"passwords are not matching");
+       
+      }
+      else{
+        setPasswordMatchStatus(current=>"passwords are matching");
+      }
 
    }
 
-   function verifyPassword(event){
-     var confirmpswd=event.target.value;
-    if(pswd1==confirmpswd){
-      setpswdstatus(true);
-    }
-    else{
-      setpswdstatus(false);
-    }
-   }
+  //Alphanumeric password---------------------------------------------------------------------------------------
 
+   
   return (
     <div className="App">
       <h3>A simple counter</h3>
@@ -79,13 +102,21 @@ function App() {
 
 
        <h3>Password Match</h3>
+
        <label>Enter password: </label>
        <input type="password"
-       onChange={handlePassword}></input>
+       onChange={handleFirstPasswordInput}></input>
        <br></br>
+       <p>Password one is: {passwordOne}</p>
+
        <label>Confirm password: </label>
        <input type="password"
-       onChange={verifyPassword}></input><span>{pswdstatus}</span>
+       onChange={comparePasswords}></input>
+       <br></br>
+       <p>Password two is: {passwordTwo}</p>
+       
+     
+       <p>You password match result is: {passwordMatchStatus}</p>
 
 
     </div>
