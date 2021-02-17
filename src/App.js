@@ -141,10 +141,18 @@ function App() {
     
       
       buttonRef.disabled=false;
+      buttonRef.addEventListener("click",()=>{
+        console.log(updatedAlphanumericPswdTwo);
+      });
+
 
      }
    }
 
+  //  function handleAlphaSubmitButton(){
+  //    console.log(alphanumericPaswdOne);
+  //    console.log(alphanumericPaswdTwo);
+  //  }
    
    
 
