@@ -80,8 +80,8 @@ function SimplePasswordVerification(){
 
   const [passwordOne, setPasswordOne] = useState("");
   const [passwordTwo, setPasswordTwo] = useState("");
-  const [passwordMatchStatus,setPasswordMatchStatus] = useState("");
-  
+  // const [passwordMatchStatus,setPasswordMatchStatus] = useState("");
+  var passwordMatchStatus="";
   
    function handleFirstPasswordInput(event){
      var updatedPasswordOne=event.target.value;
@@ -96,7 +96,7 @@ function SimplePasswordVerification(){
   //  console.log("password one is : " + passwordOne);
   //  console.log("password two is: " + passwordTwo);     
    
-   function comparePasswords(event){
+   function handleSecondPasswordInput(event){
      
     var updatedPasswordTwo=event.target.value;
       setPasswordTwo(currentPassword=>{
@@ -105,15 +105,19 @@ function SimplePasswordVerification(){
       });
 
       
-      if(passwordOne!=updatedPasswordTwo){
-        setPasswordMatchStatus(current=>"passwords are not matching");
-       
-      }
-      else{
-        setPasswordMatchStatus(current=>"passwords are matching");
-      }
+      // if(passwordOne!=updatedPasswordTwo){
+      //   setPasswordMatchStatus(current=>"passwords are not matching");
+       // }
+      // else{
+      //   setPasswordMatchStatus(current=>"passwords are matching");
+      // }
 
    }
+
+   if(passwordOne!=passwordTwo){
+     passwordMatchStatus="Passwords dont match";
+   }
+   else passwordMatchStatus="Passwords are a match";
 
   return(
     <div>
@@ -128,7 +132,7 @@ function SimplePasswordVerification(){
 
       <label>Confirm password: </label>
       <input type="password"
-      onChange={comparePasswords}></input>
+      onChange={handleSecondPasswordInput}></input>
       <br></br>
       <p>Password two is: {passwordTwo}</p>     
       <p>You password match result is: {passwordMatchStatus}</p>
