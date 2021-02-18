@@ -141,65 +141,108 @@ function SimplePasswordVerification(){
 function AlphanumericPasswordVerification(){
   const [alphanumericPaswdOne,setAlphanumericPswdOne] = useState("");
   const [alphanumericPaswdTwo,setAlphanumericPswdTwo] = useState("");
-  const [alphanumericPasswordMatchStatus, setAlphanumericPasswordMatchStatus] = useState("");
-  const [isAlphanumeric,setisAlphanumeric] = useState("");
-  var buttonRef=document.querySelector('#alphaSubmit');
-  
-  function handleAlphanumericPswdOne(event){
-     var alpha_pswd_one=event.target.value;
-     setAlphanumericPswdOne(currentPassword=>{
-       const latestPswdOne=alpha_pswd_one;
-       return latestPswdOne;
-     });
-     var hasNumFlag=0;
-     for(var i=0;i<alpha_pswd_one.length;i++){
-       var letter=alpha_pswd_one.charAt(i);
-       if(!isNaN(letter)){
-        hasNumFlag+=1;
-       }
-     }
-     if(hasNumFlag==0){
-       setisAlphanumeric(currentStatus=>{
-         const status="Not Alphanumeric";
-         return status;
-       });
-     }
-     else{
-       setisAlphanumeric(currentStatus=>{
-         const status="Is Alphanumeric";
-         return status;
-       })
-     }
-  }
-
-
-  function compareAlphanumericPasswords(event){
-    var updatedAlphanumericPswdTwo=event.target.value;
-    setAlphanumericPswdTwo(updatePswdTwo=>{
-      const pswdtwo=updatedAlphanumericPswdTwo;
-      return pswdtwo;
-    });
+  // const [alphanumericPasswordMatchStatus, setAlphanumericPasswordMatchStatus] = useState("");
+  // const [isAlphanumeric,setisAlphanumeric] = useState("");
+  var alphanumericPasswordMatchStatus="";
+  var pswdOneAlphanumericStatus="";
+  var pswdTwoAlphanumericStatus="";
+   function handleAlphanumericPswdOne(event){
     
-    if(alphanumericPaswdOne!=updatedAlphanumericPswdTwo){
-     setAlphanumericPasswordMatchStatus(status=>"Passwords are not Matching!");
-     
-     
-     buttonRef.disabled=true;
- 
+    setAlphanumericPswdOne(pswd=>event.target.value);
+
+    
    }
-    else {
-     setAlphanumericPasswordMatchStatus(status=>"Passwords are Matching!");
+
+   function handleAlphanumericPswdTwo(event){
+    
+    setAlphanumericPswdTwo(pswd=>event.target.value);
+   }
+
+   function verifyIsAlphanumeric(pswd){
+    var flag=0;
+     for(var i=0;i<pswd.length;i++){       
+      var letter=pswd.charAt(i);
+           if(!isNaN(letter)){
+             flag++;
+            }
+     }
+     if(flag==0){
+       return false;
+     }else return true;
+   }
+  
+   if(alphanumericPaswdOne!=alphanumericPaswdTwo){
+    alphanumericPasswordMatchStatus="passwords don't match";
+   }
+   else alphanumericPasswordMatchStatus="passwords match";
+
+   if(verifyIsAlphanumeric(alphanumericPaswdOne)){
+    pswdOneAlphanumericStatus="is Alphanumeric"
+   }
+   else pswdOneAlphanumericStatus="is not alphanumeric";
+
+   if(verifyIsAlphanumeric(alphanumericPaswdTwo)){
+    pswdTwoAlphanumericStatus="is Alphanumeric"
+   }
+   else pswdTwoAlphanumericStatus="is not alphanumeric";
+
+  // var buttonRef=document.querySelector('#alphaSubmit');
+  
+  // function handleAlphanumericPswdOne(event){
+  //    var alpha_pswd_one=event.target.value;
+  //    setAlphanumericPswdOne(currentPassword=>{
+  //      const latestPswdOne=alpha_pswd_one;
+  //      return latestPswdOne;
+  //    });
+  //    var hasNumFlag=0;
+  //    for(var i=0;i<alpha_pswd_one.length;i++){
+  //      var letter=alpha_pswd_one.charAt(i);
+  //      if(!isNaN(letter)){
+  //       hasNumFlag+=1;
+  //      }
+  //    }
+  //    if(hasNumFlag==0){
+  //      setisAlphanumeric(currentStatus=>{
+  //        const status="Not Alphanumeric";
+  //        return status;
+  //      });
+  //    }
+  //    else{
+  //      setisAlphanumeric(currentStatus=>{
+  //        const status="Is Alphanumeric";
+  //        return status;
+  //      })
+  //    }
+  // }
+
+
+  // function compareAlphanumericPasswords(event){
+  //   var updatedAlphanumericPswdTwo=event.target.value;
+  //   setAlphanumericPswdTwo(updatePswdTwo=>{
+  //     const pswdtwo=updatedAlphanumericPswdTwo;
+  //     return pswdtwo;
+  //   });
+    
+  //   if(alphanumericPaswdOne!=updatedAlphanumericPswdTwo){
+  //    setAlphanumericPasswordMatchStatus(status=>"Passwords are not Matching!");
+     
+     
+  //    buttonRef.disabled=true;
+ 
+  //  }
+  //   else {
+  //    setAlphanumericPasswordMatchStatus(status=>"Passwords are Matching!");
    
      
-     buttonRef.disabled=false;
-     buttonRef.addEventListener("click",()=>{
-       alert("password entered is: "+ updatedAlphanumericPswdTwo);
-       console.log(updatedAlphanumericPswdTwo);
-     });
+  //    buttonRef.disabled=false;
+  //    buttonRef.addEventListener("click",()=>{
+  //      alert("password entered is: "+ updatedAlphanumericPswdTwo);
+  //      console.log(updatedAlphanumericPswdTwo);
+  //    });
 
 
-    }
-  }
+  //   }
+  
 
   return(
     <div>
@@ -208,20 +251,21 @@ function AlphanumericPasswordVerification(){
       <input type="password"
       onChange={handleAlphanumericPswdOne}></input>
       <p>Password entered: {alphanumericPaswdOne}</p>
-      <p>Alphanumeric check result: {isAlphanumeric}</p>
+      <p>Alphanumeric Password 1: {pswdOneAlphanumericStatus}</p>
 
       <label>Confirm Password: </label>
       <input type="password" 
-      onChange={compareAlphanumericPasswords}></input>
+      onChange={handleAlphanumericPswdTwo}></input>
       <p>Password entered: {alphanumericPaswdTwo}</p>
+      <p>Alphanumeric Password 2: {pswdTwoAlphanumericStatus}</p>
       <p>Password Match result: {alphanumericPasswordMatchStatus} </p>
 
-      <hr></hr>
+      
 
-      <h3>Disable Submit Button</h3>
+      {/* <h3>Disable Submit Button</h3>
       <button id="alphaSubmit" 
       
-      disabled>Submit Alphanumeric Password </button>
+      disabled>Submit Alphanumeric Password </button> */}
     </div>
   );
 }
@@ -240,7 +284,8 @@ function App() {
       <SimplePasswordVerification/>
       <hr></hr>
       <AlphanumericPasswordVerification/>
-
+      <hr></hr>
+     
     </div>
   );
 }
