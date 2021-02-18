@@ -32,32 +32,35 @@ function decrementValue() {
 function TwitterCharCount(){
   var permittedCharLimit=20;
   var charLeftCount=20;
+  var charCurrentCount=0;
   const[userInput,setUserInput]=useState("");  
-  const[currentLength,setCurrentLength]=useState(0);
-  const[charLeftLength,setCharLeftLength]=useState(permittedCharLimit);
+  // const[currentLength,setCurrentLength]=useState(0);
+  // const[charLeftLength,setCharLeftLength]=useState(permittedCharLimit);
 
   function inputChangeHandler(event){
-    // console.log(event.target.value);
+    
     const currentInput=event.target.value;
     setUserInput(currentVal=>currentInput);
-    calulateCharLimit(currentInput);
-  }
-
-  function calulateCharLimit(updatedUserInput){
-    setCurrentLength(updatedUserInput.length+1);
-    const lengthOfInput=updatedUserInput.length;
-    setCurrentLength(currentInputLength=>{
-      var inputLength=lengthOfInput;
-      return inputLength;
-    });
-
-    // console.log(currentLength+"current length");
-    var charLeftCount=(permittedCharLimit-lengthOfInput);
-    // console.log(charLeftCount+"charleftcount");
-     setCharLeftLength(updatedLength=>charLeftCount);
-
+    // calulateCharLimit(currentInput);
+    
 
   }
+  charCurrentCount=userInput.length;
+  charLeftCount=permittedCharLimit-charCurrentCount;
+
+
+  // function calulateCharLimit(updatedUserInput){
+  //   setCurrentLength(updatedUserInput.length+1);
+  //   const lengthOfInput=updatedUserInput.length;
+  //   setCurrentLength(currentInputLength=>{
+  //     var inputLength=lengthOfInput;
+  //     return inputLength;
+  //   });
+  //   var charLeftCount=(permittedCharLimit-lengthOfInput);
+  //    setCharLeftLength(updatedLength=>charLeftCount);
+
+
+  // }
 
   return(
     <div>
@@ -66,7 +69,7 @@ function TwitterCharCount(){
         onChange={inputChangeHandler}
        ></input>
         <p>{userInput}</p>
-        <p>{currentLength} is your current char count<br></br>Chars left: {charLeftLength}</p>
+        <p>{charCurrentCount} is your current char count<br></br>Chars left: {charLeftCount}</p>
     </div>
   );
 }
