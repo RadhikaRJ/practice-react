@@ -85,10 +85,7 @@ function SimplePasswordVerification(){
   
    function handleFirstPasswordInput(event){
      var updatedPasswordOne=event.target.value;
-      setPasswordOne(currentPassword=>{
-        const latestPasswordOneValue=updatedPasswordOne;
-        return latestPasswordOneValue;
-      });
+      setPasswordOne(currentPassword=>updatedPasswordOne);
       
    }
 
@@ -99,10 +96,7 @@ function SimplePasswordVerification(){
    function handleSecondPasswordInput(event){
      
     var updatedPasswordTwo=event.target.value;
-      setPasswordTwo(currentPassword=>{
-        const latestPasswordTwoValue=updatedPasswordTwo;
-        return latestPasswordTwoValue;
-      });
+      setPasswordTwo(currentPassword=>updatedPasswordTwo);
 
       
       // if(passwordOne!=updatedPasswordTwo){
