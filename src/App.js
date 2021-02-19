@@ -3,55 +3,9 @@ import './App.css';
 import { useState } from "react";
 
 import ButtonCounter from './Exercise-components/ButtonCounter';
+import TwitterCharCount from "./Exercise-components/TwitterCharCount";
 
-
- //Character counter - Twitter----------------------------------------------------------------------
-
-function TwitterCharCount(){
-  var permittedCharLimit=20;
-  var charLeftCount=20;
-  var charCurrentCount=0;
-  const[userInput,setUserInput]=useState("");  
-  // const[currentLength,setCurrentLength]=useState(0);
-  // const[charLeftLength,setCharLeftLength]=useState(permittedCharLimit);
-
-  function inputChangeHandler(event){
-    
-    const currentInput=event.target.value;
-    setUserInput(currentVal=>currentInput);
-    // calulateCharLimit(currentInput);
-    
-
-  }
-  charCurrentCount=userInput.length;
-  charLeftCount=permittedCharLimit-charCurrentCount;
-
-
-  // function calulateCharLimit(updatedUserInput){
-  //   setCurrentLength(updatedUserInput.length+1);
-  //   const lengthOfInput=updatedUserInput.length;
-  //   setCurrentLength(currentInputLength=>{
-  //     var inputLength=lengthOfInput;
-  //     return inputLength;
-  //   });
-  //   var charLeftCount=(permittedCharLimit-lengthOfInput);
-  //    setCharLeftLength(updatedLength=>charLeftCount);
-
-
-  // }
-
-  return(
-    <div>
-      <h3>Character counter -Twitter</h3>
-       <input type="text" 
-        onChange={inputChangeHandler}
-       ></input>
-        <p>{userInput}</p>
-        <p>{charCurrentCount} is your current char count<br></br>Chars left: {charLeftCount}</p>
-    </div>
-  );
-}
-
+ 
 
 //password Match---------------------------------------------------------------------------------------------
 function SimplePasswordVerification(){
