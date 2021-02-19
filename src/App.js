@@ -2,7 +2,7 @@
 import './App.css';
 import { useState } from "react";
 
-import ButtonCounter from './ButtonCounter';
+import ButtonCounter from './Exercise-components/ButtonCounter';
 
 
  //Character counter - Twitter----------------------------------------------------------------------
