@@ -25,7 +25,7 @@ function TwitterCharCount(){
     return(
       <div>
         <h3>Character counter -Twitter</h3>
-         <input type="text" 
+         <input type="text" value={userInput}
           onChange={inputChangeHandler}
          ></input>
           <p>{userInput}</p>
