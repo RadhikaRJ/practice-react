@@ -6,6 +6,7 @@ import ButtonCounter from './Exercise-components/ButtonCounter';
 import TwitterCharCount from "./Exercise-components/TwitterCharCount";
 import SimplePasswordVerification from "./Exercise-components/SimplePasswordVerification";
 import AlphanumericPasswordVerification from "./Exercise-components/AlphanumericPasswordVerification";
+import ToastDisplay from './Exercise-components/ToastDisplay';
 
 function App() {
 
@@ -19,7 +20,9 @@ function App() {
       <hr></hr>
       <AlphanumericPasswordVerification/>
       <hr></hr>
-      
+      <br></br>
+      <ToastDisplay/>
+      <br></br>
     </div>
   );
 }
