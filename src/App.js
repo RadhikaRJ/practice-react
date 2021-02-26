@@ -7,6 +7,7 @@ import TwitterCharCount from "./Exercise-components/TwitterCharCount";
 import SimplePasswordVerification from "./Exercise-components/SimplePasswordVerification";
 import AlphanumericPasswordVerification from "./Exercise-components/AlphanumericPasswordVerification";
 import ToastDisplay from './Exercise-components/ToastDisplay';
+import LikeInAList from './Exercise-components/LikeInAList';
 
 function App() {
 
@@ -23,6 +24,8 @@ function App() {
       <br></br>
       <ToastDisplay/>
       <br></br>
+      <LikeInAList/>
+     
     </div>
   );
 }
