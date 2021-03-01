@@ -8,6 +8,7 @@ import SimplePasswordVerification from "./Exercise-components/SimplePasswordVeri
 import AlphanumericPasswordVerification from "./Exercise-components/AlphanumericPasswordVerification";
 import ToastDisplay from './Exercise-components/ToastDisplay';
 import LikeInAList from './Exercise-components/LikeInAList';
+import OnButtonClickexercise from './Exercise-components/OnButtonClickexercise';
 
 function App() {
 
@@ -25,7 +26,9 @@ function App() {
       <ToastDisplay/>
       <br></br>
       <LikeInAList/>
-     
+      <hr></hr>
+      <br></br>
+      <OnButtonClickexercise/>
     </div>
   );
 }
